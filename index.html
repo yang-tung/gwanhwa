@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>观化知识产权</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="images/icon.png">
+    <link rel="icon" type="image/x-icon" href="images/icon.ico">
+    <link rel="apple-touch-icon" href="images/icon.png">
+    <!-- 引入 Philosopher 字体 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <!-- 视频背景 -->
+        <video class="hero-video" autoplay muted loop playsinline>
+            <source src="videos/spring.mp4" type="video/mp4">
+        </video>
+        
+        <!-- 文字内容 + AI按钮 -->
+        <div class="hero-content">
+            <!-- AI聊天按钮 - 放在标题上方 -->
+            <button class="ai-chat-fab" id="chatFab">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                </svg>
+                <span>你来问，我来答</span>
+                <span class="pulse-dot"></span>
+            </button>
+            
+            <h1><span class="welcome-text">Welcome to</span> <span class="gwanhwa-text">gwanhwa<sup style="font-size: 0.5em; font-style: normal; font-weight: normal; font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif;">®</sup></span></h1>
+            <p class="hero-subtitle"><span class="brand-char">观</span><span class="brand-char brand-char-last">化</span><span class="brand-reg-float">®</span>为全球客户提供知识产权服务解决方案</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="global-footer">Copyright &copy; 2021 - 2026 <span style="font-family: 'Philosopher', sans-serif; font-style: italic; font-weight: 700;">gwanhwa<sup style="font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif;">®</sup></span>. All Rights Reserved. 观化公司 版权所有</footer>
+
+    <!-- 聊天窗口 -->
+    <div class="ai-chat-window" id="chatWindow">
+        <div class="chat-header">
+            <div class="chat-avatar">😊</div>
+            <div class="chat-info">
+                <h3>观化 AI助手</h3>
+            </div>
+            <button class="chat-close" id="chatClose">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 6L6 18M6 6l12 12"/>
+                </svg>
+            </button>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="welcome-hint">
+                <p>👋 您好！有什么可以帮您？</p>
+                <div class="quick-questions">
+                    <button class="quick-btn" data-question="你们提供哪些服务？">服务项目</button>
+                    <button class="quick-btn" data-question="如何联系你们？">联系方式</button>
+                    <button class="quick-btn" data-question="你们的客户有哪些？">客户案例</button>
+                </div>
+            </div>
+        </div>
+        <div class="chat-input-area">
+            <textarea class="chat-input" id="chatInput" placeholder="输入您的问题..." rows="1"></textarea>
+            <button class="chat-send" id="chatSend">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- AI聊天脚本 -->
+    <script src="knowledge-base.js"></script>
+    <script src="ai-chat.js"></script>
+</body>
+</html>

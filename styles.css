@@ -1,0 +1,1073 @@
+/* ============================================
+   gwanhwa.cn - Apple Style Minimalist Design
+   ============================================ */
+
+/* 演示春风楷字体 */
+@font-face {
+    font-family: '演示春风楷';
+    src: url('fonts/演示春风楷.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Philosopher 粗斜体字体 */
+@font-face {
+    font-family: 'Philosopher';
+    src: url('fonts/Philosopher-BoldItalic.ttf') format('truetype');
+    font-weight: 700;
+    font-style: italic;
+    font-display: swap;
+}
+
+/* Reset & Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+    color: #1d1d1f;
+    background-color: #000000;
+}
+
+/* ============================================
+   全局 Footer - 底部居中浮动版权信息
+   ============================================ */
+.global-footer {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 20px;
+    z-index: 100;
+    font-size: 12px;
+    color: #ffffff;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+    pointer-events: none;
+}
+
+/* ============================================
+   首页 - 季节标题
+   ============================================ */
+.season-title {
+    position: absolute;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    font-size: 28px;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    color: #ffffff;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    white-space: nowrap;
+}
+
+.season-cn {
+    font-family: "Songti SC", "SimSun", "STSong", serif;
+    font-size: 80px;
+    font-weight: normal;
+}
+
+.season-en {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+    font-size: 28px;
+    font-weight: 300;
+    letter-spacing: 0.15em;
+}
+
+/* ============================================
+   首页 - Hero Section with Video Background
+   ============================================ */
+.hero {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    color: #ffffff;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.hero-content h1 {
+    font-size: 80px;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    line-height: 1.05;
+    margin-bottom: 12px;
+}
+
+/* Welcome to - 用系统默认字体 */
+.welcome-text {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+    font-style: normal;
+}
+
+/* gwanhwa - 用 Philosopher 粗斜体 */
+.gwanhwa-text {
+    font-family: 'Philosopher', sans-serif;
+    font-style: italic;
+}
+
+.hero-content p {
+    font-size: 28px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* 副标题样式 */
+.hero-subtitle {
+    font-size: 28px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* 品牌名"观化"样式 - 演示春风楷字体，逐字控制 */
+.brand-char {
+    font-family: '演示春风楷', 'STKaiti', 'KaiTi', 'Songti SC', 'SimSun', 'STSong', serif;
+    font-size: 48px;
+    letter-spacing: 0;
+    margin-right: 10px;
+    position: relative;
+    display: inline-block;
+    line-height: 1.2;
+    vertical-align: baseline;
+    /* 往下移动 */
+    transform: translateY(8px);
+}
+
+/* "观"字：用负margin让"化"向左靠近，重叠空白区域 */
+.brand-char:first-of-type {
+    margin-right: -15px;
+}
+
+/* 最后一个品牌字与正文的间距 */
+.brand-char:last-of-type {
+    margin-right: 20px;
+}
+
+/* "化"字需要相对定位，作为®的定位参考 */
+.brand-char-last {
+    position: relative;
+}
+
+/* ® 标志 - 浮动在"化"字右上角 */
+.brand-reg-float {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: normal;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif;
+    position: absolute;
+    top: 188px;
+    right: 582px;
+    line-height: 1;
+    pointer-events: none;
+}
+
+/* ============================================
+   partners.html / wechat.html - 页面视频背景
+   ============================================ */
+.page-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+/* ============================================
+   partners.html - 标题区域（透明背景）
+   ============================================ */
+.page-header {
+    position: relative;
+    padding-top: 40px;
+    padding-bottom: 30px;
+    text-align: center;
+    background: transparent;
+}
+
+/* 标题区域在内容下方时 */
+.page-header-bottom {
+    margin-top: 0;
+    padding-top: 20px;
+    padding-bottom: 40px;
+}
+
+.page-header h1 {
+    font-size: 36px;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    margin-bottom: 12px;
+    color: #ffffff;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.page-header .page-subtitle {
+    font-size: 20px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.8);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* ============================================
+   partners.html - Logo展示区域（4个圆角卡片 + 翻页效果）
+   ============================================ */
+.partners-container {
+    display: flex;
+    height: auto;
+    min-height: calc(100vh - 48px - 180px);
+    align-items: stretch;
+    padding-top: 80px;
+}
+
+.logo-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 40px;
+    padding-right: 30px;
+}
+
+.logo-section h2 {
+    font-size: 28px;
+    font-weight: 400;
+    margin-bottom: 40px;
+    color: #ffffff;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.logo-carousel-container {
+    width: 100%;
+}
+
+.logo-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    width: 100%;
+}
+
+.logo-card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px) brightness(0.85) saturate(1.3);
+    -webkit-backdrop-filter: blur(20px) brightness(0.85) saturate(1.3);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s ease;
+    min-height: 120px;
+    position: relative;
+}
+
+.logo-card img {
+    position: absolute;
+    max-width: 140px;
+    max-height: 100px;
+    object-fit: contain;
+    opacity: 1;
+}
+
+/* 前景图（当前显示的） */
+.logo-card .logo-img-front {
+    z-index: 2;
+    transition: opacity 0.4s ease;
+}
+
+/* 背景图（下一张，预加载隐藏） */
+.logo-card .logo-img-back {
+    z-index: 1;
+}
+
+/* Logo翻页指示器 */
+.logo-pagination {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.logo-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.logo-dot.active {
+    background: #ffffff;
+    transform: scale(1.2);
+}
+
+.contact-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 40px;
+    padding-left: 30px;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.contact-section {
+    text-align: center;
+    width: 100%;
+}
+
+.contact-section h2 {
+    font-size: 28px;
+    font-weight: 400;
+    margin-bottom: 40px;
+    color: #ffffff;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    width: 100%;
+}
+
+.contact-card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px) brightness(0.85) saturate(1.3);
+    -webkit-backdrop-filter: blur(20px) brightness(0.85) saturate(1.3);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, background 0.3s ease;
+    min-height: 120px;
+}
+
+.contact-card:hover {
+    transform: translateY(-3px);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.contact-icon {
+    font-size: 28px;
+    margin-bottom: 12px;
+}
+
+.contact-label {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.contact-value {
+    font-size: 14px;
+    font-weight: 500;
+    color: #ffffff;
+}
+
+/* 移动端响应式 */
+@media (max-width: 900px) {
+    html, body {
+        overflow: auto;
+    }
+
+    .partners-container {
+        flex-direction: column;
+        height: auto;
+        min-height: calc(100vh - 48px - 110px);
+    }
+
+    .logo-section {
+        height: auto;
+        padding: 20px;
+    }
+
+    .contact-wrapper {
+        border-left: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 20px;
+    }
+
+    .logo-grid,
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .page-header h1 {
+        font-size: 28px;
+    }
+
+    .hero-content h1 {
+        font-size: 48px;
+    }
+
+    .hero-content p {
+        font-size: 20px;
+    }
+}
+
+/* ============================================
+   wechat.html - 文章列表样式
+   ============================================ */
+.articles-section {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 22px 100px;
+}
+
+.articles-list {
+    margin-bottom: 60px;
+}
+
+.article-item {
+    display: flex;
+    align-items: baseline;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.article-date {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.5);
+    min-width: 100px;
+    flex-shrink: 0;
+}
+
+.article-title {
+    font-size: 19px;
+    color: #0066cc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.article-title:hover {
+    color: #004499;
+    text-decoration: underline;
+}
+
+/* ============================================
+   wechat.html - 视频背景页面专用样式覆盖
+   ============================================ */
+
+/* 视频页面：导航栏毛玻璃效果 */
+.video-page .navbar {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* 视频页面：导航栏文字白色 */
+.video-page .nav-logo,
+.video-page .nav-menu a {
+    color: #ffffff !important;
+}
+
+/* 视频页面：整体文字白色 */
+.video-page .page-header h1,
+.video-page .page-header .page-subtitle,
+.video-page .article-item,
+.video-page .article-date {
+    color: #ffffff !important;
+}
+
+/* 视频页面：文章标题白色 */
+.video-page .article-title {
+    color: #ffffff !important;
+    opacity: 0.9;
+}
+
+.video-page .article-title:hover {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+/* ============================================
+   3D 流动 Logo 轮播 - 深色背景（保留作为备用）
+   ============================================ */
+.logo-carousel {
+    width: 100%;
+    overflow: hidden;
+    padding: 60px 0;
+    background: #1a1a1a;
+    display: flex;
+    align-items: center;
+}
+
+.logo-track-old {
+    display: flex;
+    gap: 80px;
+    animation: scroll 25s linear infinite;
+    width: max-content;
+}
+
+.logo-track-old img {
+    height: 60px;
+    width: auto;
+    object-fit: contain;
+    filter: none;
+    opacity: 1;
+    transition: all 0.3s ease;
+}
+
+.logo-track-old img:hover {
+    transform: scale(1.15);
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 40px 22px;
+    background: #000000;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer p {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* Gallery Section */
+.gallery {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 22px;
+}
+
+.gallery h2 {
+    font-size: 40px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 50px;
+    color: #ffffff;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.gallery-item {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 18px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: scale(1.02);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+}
+
+.gallery-caption {
+    padding: 16px;
+    text-align: center;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.placeholder-text {
+    text-align: center;
+    margin-top: 40px;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 14px;
+}
+
+.placeholder-box {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 30px;
+    margin-top: 40px;
+    color: #ffffff;
+}
+
+.placeholder-box p {
+    margin-bottom: 16px;
+}
+
+.placeholder-box ol {
+    margin-left: 20px;
+    margin-bottom: 16px;
+}
+
+.placeholder-box pre {
+    background: #1d1d1f;
+    color: #f5f5f7;
+    padding: 20px;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+/* Partners Section */
+.partners-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 22px 100px;
+}
+
+.partners-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+}
+
+.partner-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 40px 30px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.partner-card:hover {
+    transform: scale(1.02);
+}
+
+.partner-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    color: white;
+    margin: 0 auto 24px;
+}
+
+.partner-card h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.partner-list {
+    list-style: none;
+    text-align: left;
+    padding-left: 20px;
+}
+
+.partner-list li {
+    padding: 8px 0;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.8);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.partner-list li:last-child {
+    border-bottom: none;
+}
+
+/* ============================================
+   AI智能助手 - 聊天组件样式
+   ============================================ */
+
+/* AI聊天按钮 - 放在hero-content内，相对定位 */
+.ai-chat-fab {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 28px;
+    margin-bottom: 30px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50px;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+}
+
+.ai-chat-fab:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: scale(1.05);
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.4);
+}
+
+.ai-chat-fab svg {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+}
+
+.ai-chat-fab .pulse-dot {
+    width: 8px;
+    height: 8px;
+    background: #34d399;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+    flex-shrink: 0;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.2); }
+}
+
+/* AI聊天窗口 - 磨砂透明风格 */
+.ai-chat-window {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.95);
+    width: 420px;
+    max-width: calc(100vw - 40px);
+    max-height: 70vh;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 24px;
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    z-index: 1002;
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.ai-chat-window.active {
+    display: flex;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* 聊天窗口头部 - 磨砂透明 */
+.chat-header {
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.chat-avatar {
+    width: 44px;
+    height: 44px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    line-height: 1;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.chat-info h3 {
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+}
+
+.chat-info span {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 12px;
+}
+
+.chat-close {
+    margin-left: auto;
+    width: 32px;
+    height: 32px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 50%;
+    color: #ffffff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+    flex-shrink: 0;
+}
+
+.chat-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* 聊天消息区域 */
+.chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.chat-messages::-webkit-scrollbar {
+    width: 4px;
+}
+
+.chat-messages::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+}
+
+.message {
+    display: flex;
+    gap: 12px;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.message.user {
+    flex-direction: row-reverse;
+}
+
+.message-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    line-height: 1;
+    overflow: hidden;
+}
+
+.message.bot .message-avatar {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.message.user .message-avatar {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.message-content {
+    max-width: 75%;
+    padding: 12px 16px;
+    border-radius: 18px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #ffffff;
+    word-break: break-word;
+}
+
+.message.bot .message-content {
+    background: rgba(255, 255, 255, 0.1);
+    border-bottom-left-radius: 4px;
+}
+
+.message.user .message-content {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-bottom-right-radius: 4px;
+}
+
+/* 欢迎消息 - 磨砂透明风格 */
+.welcome-hint {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 13px;
+    padding: 20px;
+}
+
+.quick-questions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin-top: 12px;
+}
+
+.quick-btn {
+    padding: 8px 14px;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+}
+
+.quick-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.35);
+}
+
+/* 加载动画 */
+.typing-indicator {
+    display: flex;
+    gap: 4px;
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 18px;
+    border-bottom-left-radius: 4px;
+}
+
+.typing-indicator span {
+    width: 8px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    animation: typing 1.4s infinite;
+}
+
+.typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+.typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes typing {
+    0%, 60%, 100% { transform: translateY(0); opacity: 0.5; }
+    30% { transform: translateY(-6px); opacity: 1; }
+}
+
+/* 输入区域 - 磨砂透明 */
+.chat-input-area {
+    padding: 16px 20px;
+    background: rgba(255, 255, 255, 0.08);
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    display: flex;
+    gap: 12px;
+    align-items: flex-end;
+}
+
+.chat-input {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 24px;
+    padding: 12px 18px;
+    color: #ffffff;
+    font-size: 14px;
+    resize: none;
+    max-height: 120px;
+    outline: none;
+    transition: all 0.2s;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.5;
+}
+
+.chat-input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.chat-input:focus {
+    background: rgba(255, 255, 255, 0.18);
+    border-color: rgba(255, 255, 255, 0.35);
+}
+
+.chat-send {
+    width: 44px;
+    height: 44px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    border-radius: 50%;
+    color: #ffffff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s, opacity 0.2s;
+    flex-shrink: 0;
+}
+
+.chat-send:hover:not(:disabled) {
+    transform: scale(1.05);
+}
+
+.chat-send:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* AI聊天 - 移动端适配 */
+@media (max-width: 480px) {
+    .ai-chat-fab {
+        padding: 12px 20px;
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+
+    .ai-chat-window {
+        width: calc(100vw - 20px);
+        max-height: 60vh;
+    }
+
+    .message-content {
+        max-width: 85%;
+    }
+}
