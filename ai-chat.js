@@ -9,10 +9,12 @@
 // ============================================
 const CONFIG = {
     // Netlify Functions 端点
+    // 部署到 Netlify 后，将下面的地址改为您的 Netlify 域名
+    // 例如: https://your-site.netlify.app/.netlify/functions/chat
     apiEndpoint: 'https://willowy-biscuit-b07397.netlify.app/.netlify/functions/chat',
     
     // 界面配置
-    maxTokens: 800,
+    maxTokens: 500,
     temperature: 0.7,
     welcomeMessage: '您好！我是观化AI。请问有什么可以帮助您的？'
 };
@@ -172,6 +174,19 @@ class AIChat {
 
     async callAI(userMessage) {
         // 构建系统提示词 + 知识库
+        // 安全获取知识库
+        let knowledgeContext = '';
+        try {
+            if (typeof getFullKnowledgeContext === 'function') {
+                knowledgeContext = getFullKnowledgeContext();
+            } else {
+                knowledgeContext = getKnowledgeFallback();
+            }
+        } catch (e) {
+            console.error('知识库加载失败:', e);
+            knowledgeContext = getKnowledgeFallback();
+        }
+
         const systemContext = `你是"观化知识产权事务所"的AI智能助手，名叫"观化"。
 
 【重要规则】
@@ -182,7 +197,7 @@ class AIChat {
 5. 不要编造任何不在知识库中的信息
 
 【知识库】
-${typeof getFullKnowledgeContext === 'function' ? getFullKnowledgeContext() : getKnowledgeFallback()}`;
+${knowledgeContext}`;
 
         const apiMessages = [
             { role: 'system', content: systemContext },
