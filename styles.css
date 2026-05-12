@@ -54,6 +54,11 @@ body {
     pointer-events: none;
 }
 
+/* 桌面端隐藏footer换行 */
+.footer-break {
+    display: none;
+}
+
 /* ============================================
    首页 - Hero Section with Video Background
    ============================================ */
@@ -149,13 +154,13 @@ body {
 
 /* ® 标志 - 放在"化"字里面 */
 .brand-reg-float {
-    font-size: 20px;
+    font-size: 14px;
     font-style: normal;
     font-weight: normal;
     font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif;
     position: absolute;
     top: -0.5em;
-    right: -1em;
+    right: -1.2em;
     line-height: 1;
     pointer-events: none;
 }
@@ -221,6 +226,10 @@ body {
 
     .hero-content p {
         font-size: 20px;
+    }
+
+    .footer-break {
+        display: block;
     }
 }
 
