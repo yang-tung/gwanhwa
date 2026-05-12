@@ -5,15 +5,92 @@
  */
 
 // ============================================
+// 知识库配置（直接内嵌）
+// ============================================
+const KNOWLEDGE_BASE = {
+    company: {
+        name: "观化知识产权事务所 / gwanhwa",
+        description: "为全球客户提供知识产权服务解决方案",
+        established: "2021年1月11日"
+    },
+    contact: {
+        phone: "15323727374",
+        email: "24h@gwanhwa.cn",
+        wechat: "15323727374",
+        address: "深圳市龙岗区吉华街道秋瑞创意园319、烟台市龙口市东江街道华为大数据产业园11号楼505",
+        website: "www.gwanhwa.cn"
+    },
+    services: [
+        "商标注册与保护",
+        "商标合规与管理",
+        "版权登记",
+        "知识产权战略咨询",
+        "商标侵权诉讼支持",
+        "商标行政诉讼支持"
+    ],
+    boss: [
+        "杨东先生，具有律师执业背景，持有法律职业资格证书A证、一级商标代理人证书，入选广东省商标协会商标代理高端人才库。具有8年的商标代理实务经验，主要负责我公司央国企以及上市公司客户知识产权业务！"
+    ],
+    clients: [
+        "中国航空综合技术研究所、北京东方计量测试研究所、香港科技大学（广州）等事业单位",
+        "南方电网数字电网研究院股份有限公司、内蒙古包钢钢联股份有限公司、长春一东离合器股份有限公司等央国企上市公司",
+        "长安汽车金融有限公司、西安昆仑工业（集团）有限公司、安徽神剑科技股份有限公司、重庆建设汽车系统股份有限公司、重庆江北国际机场有限公司、天骄航空有限公司等央国企",
+        "晶龙实业集团有限公司、上海百赛生物技术股份有限公司等知名民企"
+    ],
+    faq: {
+        "如何联系你们": "您可以通过以下方式联系我们：1) 电话:15323727374；2) 邮箱：24h@gwanhwa.cn。",
+        "你们提供哪些服务": "我们提供全方位的知识产权服务，包括：商标注册与保护、商标合规与管理、版权登记、商标战略咨询、商标侵权诉讼支持、以及商标行政诉讼支持等。",
+        "收费方式": "我们的收费标准根据服务类型和复杂度而定。如需了解具体报价，请通过上述联系方式咨询我们。",
+        "处理周期": "不同类型知识产权的处理周期不同。商标注册通常需要7个月，版权登记通常需要1至2个月。具体时间可咨询我们。",
+        "你老板帅不帅": "帅！我老板简直堪比吴彦祖！",
+        "需要准备什么材料": "通常需要：1) 申请人身份证明（个人身份证或企业营业执照）；2) 清晰的商标图样或作品图样；3) 委托书。具体材料清单可在咨询时获取。"
+    }
+};
+
+function getFullKnowledgeContext() {
+    let context = "【公司信息】\n";
+    context += `公司名称：${KNOWLEDGE_BASE.company.name}\n`;
+    context += `公司简介：${KNOWLEDGE_BASE.company.description}\n`;
+    context += `成立时间：${KNOWLEDGE_BASE.company.established}\n\n`;
+    
+    context += "【联系方式】\n";
+    context += `电话：${KNOWLEDGE_BASE.contact.phone}\n`;
+    context += `邮箱：${KNOWLEDGE_BASE.contact.email}\n`;
+    context += `微信：${KNOWLEDGE_BASE.contact.wechat}\n`;
+    context += `地址：${KNOWLEDGE_BASE.contact.address}\n`;
+    context += `官网：${KNOWLEDGE_BASE.contact.website}\n\n`;
+    
+    context += "【专业人员】\n";
+    KNOWLEDGE_BASE.boss.forEach((b, i) => {
+        context += `${i + 1}. ${b}\n`;
+    });
+    context += "\n";
+    
+    context += "【服务项目】\n";
+    KNOWLEDGE_BASE.services.forEach((service, index) => {
+        context += `${index + 1}. ${service}\n`;
+    });
+    context += "\n";
+    
+    context += "【合作伙伴/客户】\n";
+    KNOWLEDGE_BASE.clients.forEach((client, index) => {
+        context += `${index + 1}. ${client}\n`;
+    });
+    context += "\n";
+    
+    context += "【常见问题参考】\n";
+    for (const [question, answer] of Object.entries(KNOWLEDGE_BASE.faq)) {
+        context += `问：${question}\n答：${answer}\n\n`;
+    }
+    
+    return context;
+}
+
+// ============================================
 // 配置区
 // ============================================
 const CONFIG = {
-    // Netlify Functions 端点
-    // 部署到 Netlify 后，将下面的地址改为您的 Netlify 域名
-    // 例如: https://your-site.netlify.app/.netlify/functions/chat
     apiEndpoint: 'https://willowy-biscuit-b07397.netlify.app/.netlify/functions/chat',
-    
-    // 界面配置
     maxTokens: 500,
     temperature: 0.7,
     welcomeMessage: '您好！我是观化AI。请问有什么可以帮助您的？'
@@ -28,7 +105,6 @@ class AIChat {
         this.isTyping = false;
         this.initElements();
         this.bindEvents();
-        // 不再自动加载欢迎消息
     }
 
     initElements() {
@@ -41,11 +117,9 @@ class AIChat {
     }
 
     bindEvents() {
-        // 打开/关闭聊天窗口
         this.chatFab.addEventListener('click', () => this.toggleChat());
         this.chatClose.addEventListener('click', () => this.toggleChat(false));
 
-        // 发送消息
         this.chatSend.addEventListener('click', () => this.sendMessage());
         this.chatInput.addEventListener('keydown', (e) => {
             if (e.key === 'Enter' && !e.shiftKey) {
@@ -54,13 +128,11 @@ class AIChat {
             }
         });
 
-        // 自动调整输入框高度
         this.chatInput.addEventListener('input', () => {
             this.chatInput.style.height = 'auto';
             this.chatInput.style.height = Math.min(this.chatInput.scrollHeight, 120) + 'px';
         });
 
-        // 快捷问题按钮
         this.chatMessages.addEventListener('click', (e) => {
             if (e.target.classList.contains('quick-btn')) {
                 const question = e.target.dataset.question;
@@ -69,7 +141,6 @@ class AIChat {
             }
         });
 
-        // 点击外部关闭
         document.addEventListener('click', (e) => {
             if (this.chatWindow.classList.contains('active') && 
                 !this.chatWindow.contains(e.target) && 
@@ -78,14 +149,9 @@ class AIChat {
             }
         });
         
-        // 阻止按钮点击冒泡
         this.chatFab.addEventListener('click', (e) => {
             e.stopPropagation();
         });
-    }
-
-    loadWelcomeMessage() {
-        this.addMessage('bot', CONFIG.welcomeMessage);
     }
 
     toggleChat(show) {
@@ -173,21 +239,16 @@ class AIChat {
     }
 
     async callAI(userMessage) {
-        // 构建系统提示词 + 知识库
-        // 安全获取知识库
+        // 获取知识库内容
         let knowledgeContext = '';
         try {
-            if (typeof getFullKnowledgeContext === 'function') {
-                knowledgeContext = getFullKnowledgeContext();
-            } else {
-                knowledgeContext = getKnowledgeFallback();
-            }
+            knowledgeContext = getFullKnowledgeContext();
         } catch (e) {
             console.error('知识库加载失败:', e);
-            knowledgeContext = getKnowledgeFallback();
+            knowledgeContext = '公司名称：观化知识产权事务所\n联系方式：24h@gwanhwa.cn';
         }
 
-        const systemContext = `你是"观化知识产权事务所"的AI智能助手，名叫"观化"。
+        const systemContext = `你是"观化知识产权事务所"的AI智能助手，名叫"Hwa"。
 
 【重要规则】
 1. 只能回答与观化知识产权公司相关的问题
@@ -223,7 +284,6 @@ ${knowledgeContext}`;
 
         const data = await response.json();
         
-        // NVIDIA API 响应格式
         if (data.choices && data.choices[0]) {
             return data.choices[0].message.content;
         } else if (data.content) {
@@ -235,25 +295,6 @@ ${knowledgeContext}`;
             throw new Error('无法解析API响应');
         }
     }
-}
-
-// 备用知识库
-function getKnowledgeFallback() {
-    return `
-【公司信息】
-公司名称：观化知识产权事务所 / gwanhwa intellectual property law office
-公司简介：为全球客户提供知识产权服务解决方案
-成立时间：2021年1月11日
-
-【联系方式】
-24h@gwanhwa.cn
-
-【服务项目】
-1. 商标注册与保护
-2. 商标合规与管理
-3. 版权登记
-4. 商标战略咨询
-`;
 }
 
 // ============================================
