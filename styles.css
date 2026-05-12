@@ -154,8 +154,8 @@ body {
     font-weight: normal;
     font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif;
     position: absolute;
-    top: 188px;
-    right: 582px;
+    top: -0.6em;
+    right: -1em;
     line-height: 1;
     pointer-events: none;
 }
