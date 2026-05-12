@@ -1,5 +1,5 @@
 /**
- * 观化知识产权事务所 - AI智能助手核心逻辑
+ * 观化知识产权 - AI智能助手核心逻辑
  * 
  * 使用 NVIDIA NIM API 作为后端，通过 Netlify Functions 代理调用
  */
@@ -9,13 +9,12 @@
 // ============================================
 const CONFIG = {
     // Netlify Functions 端点
-    // 部署到 Netlify 后，将下面的地址改为您的 Netlify 域名
-    // 例如: https://your-site.netlify.app/.netlify/functions/chat
-    apiEndpoint: 'https://gwanhwa-ai.netlify.app/.netlify/functions/chat',
+    apiEndpoint: 'https://willowy-biscuit-b07397.netlify.app/.netlify/functions/chat',
     
     // 界面配置
-    maxTokens: 1000,
+    maxTokens: 800,
     temperature: 0.7,
+    welcomeMessage: '您好！我是观化AI。请问有什么可以帮助您的？'
 };
 
 // ============================================
@@ -103,7 +102,7 @@ class AIChat {
         const messageDiv = document.createElement('div');
         messageDiv.className = `message ${role}`;
 
-        const avatar = role === 'bot' ? '🤖' : '👤';
+        const avatar = role === 'bot' ? '😊' : '🥰';
         
         if (isHtml) {
             messageDiv.innerHTML = `
@@ -129,7 +128,7 @@ class AIChat {
         typingDiv.className = 'message bot';
         typingDiv.id = 'typingIndicator';
         typingDiv.innerHTML = `
-            <div class="message-avatar">🤖</div>
+            <div class="message-avatar">😊</div>
             <div class="typing-indicator">
                 <span></span>
                 <span></span>
@@ -164,7 +163,7 @@ class AIChat {
             this.addMessage('bot', response);
         } catch (error) {
             this.hideTypingIndicator();
-            this.addMessage('bot', '抱歉，服务暂时不可用，请稍后再试或通过其他方式联系我们。');
+            this.addMessage('bot', '抱歉，服务暂时不可用。我已经骂了老板，老板说马上买Token！');
             console.error('AI调用错误:', error);
         } finally {
             this.chatSend.disabled = false;
@@ -177,13 +176,10 @@ class AIChat {
 
 【重要规则】
 1. 只能回答与观化知识产权公司相关的问题
-2. 关于联系方式、服务项目、客户信息、老板信息等，必须基于以下知识库内容回答
-3. 对于不知道或超出范围的问题，礼貌地告知访客联系专业人员
-4. 回答要专业、友好、简洁，控制在200字以内
+2. 关于联系方式、服务项目、客户信息等，必须基于以下知识库内容回答
+3. 对于不知道或超出范围的问题，礼貌地告知访客联系人工客服
+4. 回答要温柔治愈、元气可爱、知性。语气温柔软糯，自带笑意，解答专业问题时条理清晰、用词精准，日常聊天会用可爱的语气词，偶尔撒娇。日常对话互动中通常不使用句号结尾，多用语气词、感叹号、省略号营造氛围。控制在200字以内
 5. 不要编造任何不在知识库中的信息
-6.日常对话互动中通常不使用句号结尾，多用语气词、感叹号、省略号营造氛围
-7. 回答要温柔治愈、元气可爱、知性。语气温柔软糯，自带笑意，解答专业问题时条理清晰、用词精准，日常聊天会用可爱的语气词，偶尔撒娇。
-8. 如果客户问的问题超出知识库范围，引导他们通过官网渠道联系专业人员
 
 【知识库】
 ${typeof getFullKnowledgeContext === 'function' ? getFullKnowledgeContext() : getKnowledgeFallback()}`;
@@ -230,19 +226,18 @@ ${typeof getFullKnowledgeContext === 'function' ? getFullKnowledgeContext() : ge
 function getKnowledgeFallback() {
     return `
 【公司信息】
-公司名称：观化知识产权事务所 / gwanhwa
+公司名称：观化知识产权事务所 / gwanhwa intellectual property law office
 公司简介：为全球客户提供知识产权服务解决方案
 成立时间：2021年1月11日
 
 【联系方式】
-15323727374
+24h@gwanhwa.cn
 
 【服务项目】
 1. 商标注册与保护
 2. 商标合规与管理
 3. 版权登记
 4. 商标战略咨询
-5. 商标诉讼支持
 `;
 }
 
