@@ -147,15 +147,15 @@ body {
     position: relative;
 }
 
-/* ® 标志 - 浮动在"化"字右上角 */
+/* ® 标志 - 放在"化"字里面 */
 .brand-reg-float {
-    font-size: 20px;
+    font-size: 14px;
     font-style: normal;
     font-weight: normal;
     font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif;
     position: absolute;
-    top: -0.6em;
-    right: -1em;
+    top: -0.5em;
+    right: -1.2em;
     line-height: 1;
     pointer-events: none;
 }
