@@ -63,7 +63,7 @@ function getFullKnowledgeContext() {
     context += `官网：${KNOWLEDGE_BASE.contact.website}\n\n`;
     
     context += "【专业人员】\n";
-    KNOWLEDGE_BASE.boss.forEach((b, i) => {
+    KNOWLEDGE_BASE.person.forEach((b, i) => {
         context += `${i + 1}. ${b}\n`;
     });
     context += "\n";
@@ -75,7 +75,7 @@ function getFullKnowledgeContext() {
     context += "\n";
     
     context += "【事事是6事】\n";
-    KNOWLEDGE_BASE.clients.forEach((news, index) => {
+    KNOWLEDGE_BASE.news.forEach((news, index) => {
         context += `${index + 1}. ${news}\n`;
     });
     context += "\n";
